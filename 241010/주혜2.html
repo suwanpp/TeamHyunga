@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색창</title>
+    <script>
+        function searchGoogle() {
+            let keyword = document.getElementById("searchInput").value; // searchInput 값을 keyword에 저장
+            if (keyword.trim() === "") { // 공백 입력시
+                alert("검색할 키워드를 입력해주세요.");
+            } else {
+                var googleSearchUrl = "https://www.google.com/search?q=" + encodeURIComponent(keyword);
+                // encodeURIComponent(keyword) - (keyword를) URL에 포함될 수 없는 특수문자, 문법적 문제되는 문자를 안전하게 인코딩 해줌
+                window.location.href = googleSearchUrl;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>검색창</h1>
+    <input type="text" id="searchInput" placeholder="검색할 내용을 입력해주세요">
+    <button onclick="searchGoogle()">검색</button>
+</body>
+</html>

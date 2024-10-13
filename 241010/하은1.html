@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드래그 및 복사 방지</title>
+    <style>
+        /* 첫 번째 영역 - 드래그, 선택 방지 */
+        .no-select {
+            user-select: none; /* 선택 금지*/           
+        }
+
+        /* 두 번째 영역 - 텍스트 선택 가능 */
+        .no-copy {
+            user-select: text; /* 텍스트는 선택 가능 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container no-select" style="border: 1px solid black; padding: 10px;">
+        1. 안녕하세요
+    </div>
+
+    <div class="container no-copy" style="border: 1px solid black; padding: 10px; margin-top: 10px;">
+        2. 박수완 
+    </div>
+
+    <script>
+        // 두 번째 영역 복사 방지
+        document.querySelector('.no-copy').addEventListener('copy', function(e) {
+            e.preventDefault();
+            alert('이 텍스트는 복사할 수 없습니다.');
+        });
+    </script>
+
+</body>
+</html>

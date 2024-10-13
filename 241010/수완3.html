@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>단순 퀴즈 게임</title>
+</head>
+<body>
+  <h1>퀴즈 게임</h1>
+  
+  <div id="quiz">문제: 5 + 3은?</div> <!-- 문제 텍스트 -->
+  <div>정답: <input type="text" id="answer" /></div> <!-- 정답 입력 -->
+  <button id="submit">정답 제출</button> <!-- 정답 제출 버튼 -->
+  <div id="feedback"></div> <!-- 정답 여부 표시 -->
+  <div>남은 시간: <span id="timer">10</span>초</div> <!-- 남은 시간 표시 -->
+
+  <script>
+    let timeLeft = 10; // 제한 시간 10초
+    let timer; // 타이머 변수
+    const correctAnswer = "8"; // 정답
+
+    // 타이머 시작 함수
+    function startTimer() {
+      timer = setInterval(() => {  // setInterval() = 일정한 시간 간격으로 지정된 함수 반복해서 실행
+        timeLeft--; // 남은 시간을 1초씩 줄임
+        document.getElementById('timer').innerText = timeLeft; // 남은 시간 업데이트
+
+        if (timeLeft === 0) {
+          clearInterval(timer); // 타이머 중지, clearInterval = setInterval로 시작한 타이머 멈추고 싶을 때 사용, 반복 실행 중단
+          document.getElementById('feedback').innerText = "문제를 풀지 못하였습니다."; // 시간 초과 메시지 출력
+          disableQuiz(); // 퀴즈 비활성화
+        }
+      }, 1000); // 1초마다 실행
+    }
+
+    // 퀴즈 종료 시 정답 제출과 관련된 UI를 비활성화하는 함수
+    function disableQuiz() {
+      document.getElementById('answer').disabled = true; // 입력 필드 비활성화  (disabled = true)
+      document.getElementById('submit').disabled = true; // 제출 버튼 비활성화
+    }
+
+    // 정답 제출 시 정답 확인 함수
+    document.getElementById('submit').addEventListener('click', () => {
+      const userAnswer = document.getElementById('answer').value.trim(); // 사용자가 입력한 답, trim으로 공백제거
+      clearInterval(timer); // 제출 버튼을 누르면 타이머 중지
+
+      // 정답 여부에 따른 피드백 출력
+      if (userAnswer == correctAnswer) {
+        document.getElementById('feedback').innerText = "정답입니다!";
+      } else {
+        document.getElementById('feedback').innerText = "오답입니다!";
+      }
+      
+      disableQuiz(); // 퀴즈 비활성화
+    });
+
+    // 게임 시작 시 타이머 시작
+    startTimer();
+  </script>
+</body>
+</html>

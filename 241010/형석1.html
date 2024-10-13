@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5초 타이머</title>
+</head>
+<body>
+
+    <h1>5초인 타이머를 만드세요.</h1>
+
+    <!-- 타이머 숫자를 표시할 영역 -->
+    <div id="timer">5</div>
+
+    <!-- 시작 버튼 -->
+    <button id="startButton">시작</button>
+
+    <script>
+        let countdown; // 타이머 변수
+        const timerDisplay = document.getElementById('timer'); // 타이머 표시할 요소
+        const startButton = document.getElementById('startButton'); // 시작 버튼
+
+        // 시작 버튼 클릭 시 타이머 시작
+        startButton.addEventListener('click', function() {
+            let timeLeft = 5; // 5초로 시작
+
+            // 타이머가 이미 동작 중이면 초기화
+            clearInterval(countdown);
+
+            // 1초마다 숫자를 줄이는 타이머 설정
+            countdown = setInterval(function() {
+                timeLeft--;
+                timerDisplay.textContent = timeLeft; // 타이머 화면에 표시
+
+                // 0초가 되면 타이머 멈춤
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                }
+            }, 1000); // 1000밀리초(1초)마다 실행
+        });
+    </script>
+
+</body>
+</html>

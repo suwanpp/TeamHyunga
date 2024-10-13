@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Propagation</title>
+  <style>
+    #parent {
+      padding: 20px;
+      background-color: lightblue;
+    }
+    #child {
+      padding: 20px;
+      background-color: lightcoral;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 부모 요소와 자식 요소 구조 -->
+  <div id="parent">
+    부모 요소
+    <div id="child">자식 요소</div>
+  </div>
+
+  <script>
+    // 부모 요소 클릭 시 이벤트 핸들러
+    document.getElementById('parent').addEventListener('click', () => {
+      alert('부모 요소 클릭됨');
+    });
+
+    // 자식 요소 클릭 시 이벤트 핸들러
+    document.getElementById('child').addEventListener('click', (event) => {
+      alert('자식 요소 클릭됨');
+      event.stopPropagation(); // 부모로 이벤트 전파를 차단
+    });
+  </script>
+</body>
+</html>
+<!-- 
+1. 부묘 요소와 자식 요소가 있는 HTML 구조를 만드세요 
+2. 자식 요소를 클릭하면 "자식 요소 클릭됨" 메시지 출력
+3. 부모 요소를 클릭하면 "부모 요소 클릭됨" 메시지 출력 -->

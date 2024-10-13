@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가수 검색 및 라디오 버튼</title>
+    <style>
+        .search-container {
+            border: 1px solid #000;
+            padding: 20px;
+            width: 400px;
+        }
+        .search-container input[type="text"] {
+            width: 180px;
+            padding: 5px;
+        }
+        .search-container input[type="submit"] {
+            padding: 5px 10px;
+            margin-left: 5px;
+        }
+        .radio-section {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <p>가수 이름을 아래 검색창에서 검색해보실 수 있습니다.</p>
+        <!-- 검색창 UI -->
+        <form>
+            <input type="text" placeholder="검색 키워드를 입력하세요">
+            <input type="submit" value="검색">
+        </form>
+
+        <!-- 라디오 버튼 -->
+        <div class="radio-section">
+            <p>가수의 노래를 듣고싶으면 버튼을 눌러주세요</p>
+            <input type="radio" id="melon" name="music" value="melon" onclick="goToWebsite()">
+            <label for="melon">멜론</label>
+        </div>
+    </div>
+
+    <script>
+        function goToWebsite() {
+            window.location.href = "https://www.melon.com"; // 멜론 사이트로 이동
+        }
+    </script>
+
+</body>
+</html>

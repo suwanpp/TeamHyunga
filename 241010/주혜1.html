@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>짝수 홀수 맞추기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>짝수 홀수 맞추기 게임</h1>
+
+    <button onclick="generateRandom()">클릭!</button>
+
+    <input type="text" id="userInput" placeholder="홀수 or 짝수">
+    <button onclick="checkResult()">확인</button>
+
+    <script>
+        let randomNumber = 0;
+
+        function generateRandom() {
+            randomNumber = Math.floor(Math.random() * 100) + 1; // 1부터 100 사이의 랜덤 숫자 생성
+        }
+
+        function checkResult() {
+            const userInput = document.getElementById('userInput').value.trim(); // trim  앞,뒤 공백 제거
+            const isEven = randomNumber % 2 === 0; // 생성된 숫자가 짝수인지 판별
+            let resultMessage;
+
+            if (userInput === '짝수') {
+                resultMessage = `${randomNumber}은/는 짝수가 맞습니다.`; // 짝수가 맞는 경우
+                if (!isEven) {
+                    resultMessage = `${randomNumber}은/는 짝수가 아닙니다.`; // 짝수가 아닌 경우
+                }
+            } else if (userInput === '홀수') {
+                resultMessage = `${randomNumber}은/는 홀수가 맞습니다.`; // 홀수가 맞는 경우
+                if (isEven) {
+                    resultMessage = `${randomNumber}은/는 홀수가 아닙니다.`; // 홀수가 아닌 경우
+                }
+            } 
+
+            // 결과를 alert 창으로 표시
+            alert(resultMessage);
+        }
+    </script>
+
+</body>
+</html>
