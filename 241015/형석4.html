@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 게임</title>
+</head>
+<body>
+    <h2>유저에게 가위, 바위, 보 3가지 중 하나를 입력하도록 하고 랜덤으로 나온 가위바위보와 비교해 승/패를 알려주세요</h2>
+
+    <!-- 입력창과 버튼 -->
+    <input type="text" id="userInput" placeholder="가위, 바위, 보 중 입력해주세요.">
+    <button onclick="playGame()">가위바위보!</button>
+
+    <!-- 결과를 보여줄 영역 -->
+    <p id="result"></p>
+
+    <script>
+        function playGame() {
+            // 유저 입력값
+            const userInput = document.getElementById('userInput').value;
+            const choices = ["가위", "바위", "보"];
+            
+            // 컴퓨터 랜덤 선택
+            const randomChoice = choices[Math.floor(Math.random() * choices.length)];
+            
+            // 결과 비교
+            let result = "";
+            
+            if (userInput === randomChoice) {
+                result = `컴퓨터: ${randomChoice} - 비겼습니다!`;
+            } else if (
+                (userInput === "가위" && randomChoice === "보") ||
+                (userInput === "바위" && randomChoice === "가위") ||
+                (userInput === "보" && randomChoice === "바위")
+            ) {
+                result = `컴퓨터: ${randomChoice} - 이겼습니다!`;
+            } else if (choices.includes(userInput)) { // 진 경우
+                result = `컴퓨터: ${randomChoice} - 졌습니다!`;
+            } else {
+                result = "올바른 값을 입력해주세요: 가위, 바위, 보 중 하나";
+            }
+            
+            // 결과 출력
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>

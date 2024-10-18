@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경색 변경</title>
+    <style>
+        /* 사각형 스타일 */
+        #square {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: white; /* 기본 배경색 */
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        // 클릭할 때 사각형의 배경색을 주황색으로 변경하는 함수
+        function changeColor() {
+            const square = document.getElementById("square");
+            square.style.backgroundColor = "orange"; // 배경색을 주황색으로 변경
+        }
+    </script>
+</head>
+<body>
+
+    <p>클릭 버튼을 누르면 아래 사각형 안의 배경 색상이 주황색으로 바뀌게 하시오.</p>
+    
+    <!-- 색상이 변경될 사각형 -->
+    <div id="square"></div>
+    
+    <!-- 클릭 버튼 -->
+    <button onclick="changeColor()">클릭</button>
+
+</body>
+</html>
