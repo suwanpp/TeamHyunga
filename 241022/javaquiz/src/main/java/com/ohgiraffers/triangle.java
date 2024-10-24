@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class triangle {
 
-
     public static void main(String[] args) {
-
 
         Scanner sc = new Scanner(System.in);
         System.out.print("만드려는 삼각형의 높이를 입력하세요 : ");
